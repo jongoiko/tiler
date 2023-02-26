@@ -1,13 +1,15 @@
 ;   defs.asm
 ; Definitions and macros
 
+INCLUDE "hardware.inc"
+
 CURSOR_TILE_ADDR_START EQU $9822
 
 CURSOR_TILENUM EQU 4
 
 MACRO WaitVBlank
 .wait\@ 
-    ld a, [$FF44]
+    ld a, [rLY]
     cp a, 144
     jr c, .wait\@
     ENDM

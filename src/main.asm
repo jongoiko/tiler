@@ -1,6 +1,7 @@
 ;   main.asm
 ; Main program
 
+INCLUDE "hardware.inc"
 INCLUDE "defs.asm"
 
 SECTION "Header", ROM0[$100]
@@ -20,7 +21,7 @@ Start:
     WaitVBlank
 
     xor a
-    ld [$FF40], a   ; Turn LCD off
+    ld [rLCDC], a   ; Turn LCD off
 
 ; Load tiles
     ld hl, $9000
@@ -39,8 +40,8 @@ Start:
 ; the Nintendo logo seems to leave some garbage bytes in the tilemap, so we
 ; should clear it for good measure
 
-    ld hl, $9800
-    ld bc, $9FFF - $9800
+    ld hl, _SCRN0
+    ld bc, _SRAM - 1 - _SCRN0
 
 .clear
     xor a
@@ -51,7 +52,7 @@ Start:
     jr nz, .clear
     
 ; Set stack pointer to top of internal RAM to free up space for HRAM variables
-    ld sp, $CFFF
+    ld sp, _RAMBANK - 1
 
     call DrawUI
     
@@ -80,15 +81,15 @@ Start:
 
 ; Set up and start LCD
     ld a, %11100100
-    ld [$FF47], a
+    ld [rBGP], a
 
     xor a
-    ld [$FF42], a
-    ld [$FF43], a
-    ld [$FF26], a
+    ld [rSCY], a
+    ld [rSCX], a
+    ld [rNR52], a
 
-    ld a, %10000001
-    ld [$FF40], a
+    ld a, LCDCF_ON | LCDCF_BGON
+    ld [rLCDC], a
  
     ld d, 0
 

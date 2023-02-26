@@ -66,4 +66,3 @@ SetZBitHL:
     and a, [hl]
     ld [hl], a
     ret
-

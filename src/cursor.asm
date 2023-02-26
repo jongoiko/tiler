@@ -1,6 +1,7 @@
 ;   cursor.asm
 ; Cursor location and button input handling routines
 
+INCLUDE "hardware.inc"
 INCLUDE "defs.asm"
 INCLUDE "hram.asm"
 INCLUDE "config.asm"
@@ -13,19 +14,19 @@ SECTION "Cursor and buttons", ROM0
 ;     A: resulting byte
 ;     B: destroyed
 ReadButtons::
-    ld a, %00100000
-    ld [$FF00], a
-    ld a, [$FF00]
-    ld a, [$FF00]
-    ld a, [$FF00]
+    ld a, P1F_5
+    ld [rP1], a
+    ld a, [rP1]
+    ld a, [rP1]
+    ld a, [rP1]
     and a, $0F
     ld b, a
-    ld a, %00010000
-    ld [$FF00], a
-    ld a, [$FF00]
-    ld a, [$FF00]
-    ld a, [$FF00]
-    ld a, [$FF00]
+    ld a, P1F_4
+    ld [rP1], a
+    ld a, [rP1]
+    ld a, [rP1]
+    ld a, [rP1]
+    ld a, [rP1]
     and a, $0F
     swap a
     or a, b
