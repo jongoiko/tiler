@@ -1,4 +1,4 @@
-;   conf.asm
+;   config.asm
 ; Configuration options
 
 TRUE  EQU 1

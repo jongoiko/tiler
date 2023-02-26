@@ -3,7 +3,7 @@
 
 INCLUDE "defs.asm"
 INCLUDE "hram.asm"
-INCLUDE "conf.asm"
+INCLUDE "config.asm"
 
 SECTION "Cursor and buttons", ROM0
 
