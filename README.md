@@ -1,6 +1,6 @@
 # tiler - A GameBoy tile editor for the GameBoy
 
-`tiler` is a simple drawing app for the GameBoy, with the peculiarity that it converts the tile you're drawing into [the console's tile format](https://www.huderlem.com/demos/gameboy2bpp.html#:~:text=The%20Gameboy%20displays%20its%20graphics,single%20tile%20(8x8%20pixels)).
+`tiler` is a simple drawing app for the GameBoy, with the peculiarity that it converts the tile you're drawing into [the console's tile format](https://www.huderlem.com/demos/gameboy2bpp.html).
 
 ![The ROM running on an emulator](https://github.com/jongoiko/tiler/blob/main/tiler.gif)
 
